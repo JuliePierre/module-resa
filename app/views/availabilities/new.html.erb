@@ -10,10 +10,9 @@
             <div class="availabilities-day-date">9 janvier</div>
           </div>
           <div class="availabilities-slots">
-            <div class="availabilities-slot active" data-date="9 janvier" data-time="9:00">9:00</div>
-            <div class="availabilities-slot">10:00</div>
-            <div class="availabilities-slot">11:00</div>
-            <div class="availabilities-slot">12:00</div>
+            <!-- <div class="availabilities-slot active" data-date="<%#= Date.today %>">9:00</div> -->
+            <div class="availabilities-slot active" data-date="2017,1,9", data-time="9:00">9:00</div>
+            <div class="availabilities-slot" data-date="2017,1,9", data-time="10:00">10:00</div>
           </div>
         </div>
         <div class="availabilities-day">
@@ -22,10 +21,8 @@
             <div class="availabilities-day-date">10 janvier</div>
           </div>
           <div class="availabilities-slots">
-            <div class="availabilities-slot">9:00</div>
-            <div class="availabilities-slot">10:00</div>
-            <div class="availabilities-slot">11:00</div>
-            <div class="availabilities-slot">12:00</div>
+            <div class="availabilities-slot" data-date="2017,1,10", data-time="9:00">9:00</div>
+            <div class="availabilities-slot" data-date="2017,1,10", data-time="10:00">10:00</div>
           </div>
         </div>
         <div class="availabilities-day">
@@ -34,10 +31,8 @@
             <div class="availabilities-day-date">11 janvier</div>
           </div>
           <div class="availabilities-slots">
-            <div class="availabilities-slot">9:00</div>
-            <div class="availabilities-slot">10:00</div>
-            <div class="availabilities-slot">11:00</div>
-            <div class="availabilities-slot">12:00</div>
+            <div class="availabilities-slot" data-date="2017,1,11", data-time="9:00">9:00</div>
+            <div class="availabilities-slot" data-date="2017,1,11", data-time="10:00">10:00</div>
           </div>
         </div>
         <div class="availabilities-day">
@@ -46,10 +41,8 @@
             <div class="availabilities-day-date">12 janvier</div>
           </div>
           <div class="availabilities-slots">
-            <div class="availabilities-slot">9:00</div>
-            <div class="availabilities-slot">10:00</div>
-            <div class="availabilities-slot">11:00</div>
-            <div class="availabilities-slot">12:00</div>
+            <div class="availabilities-slot" data-date="2017,1,12", data-time="9:00">9:00</div>
+            <div class="availabilities-slot" data-date="2017,1,12", data-time="10:00">10:00</div>
           </div>
         </div>
         <div class="availabilities-day">
@@ -58,10 +51,8 @@
             <div class="availabilities-day-date">13 janvier</div>
           </div>
           <div class="availabilities-slots">
-            <div class="availabilities-slot">9:00</div>
-            <div class="availabilities-slot">10:00</div>
-            <div class="availabilities-slot">11:00</div>
-            <div class="availabilities-slot">12:00</div>
+            <div class="availabilities-slot" data-date="2017,1,13", data-time="9:00">9:00</div>
+            <div class="availabilities-slot" data-date="2017,1,13", data-time="10:00">10:00</div>
           </div>
         </div>
         <div class="availabilities-day">
@@ -70,10 +61,8 @@
             <div class="availabilities-day-date">14 janvier</div>
           </div>
           <div class="availabilities-slots">
-            <div class="availabilities-slot">9:00</div>
-            <div class="availabilities-slot">10:00</div>
-            <div class="availabilities-slot">11:00</div>
-            <div class="availabilities-slot">12:00</div>
+            <div class="availabilities-slot" data-date="2017,1,14", data-time="9:00">9:00</div>
+            <div class="availabilities-slot" data-date="2017,1,14", data-time="10:00">10:00</div>
           </div>
         </div>
         <div class="availabilities-day">
@@ -82,15 +71,13 @@
             <div class="availabilities-day-date">15 janvier</div>
           </div>
           <div class="availabilities-slots">
-            <div class="availabilities-slot">9:00</div>
-            <div class="availabilities-slot">10:00</div>
-            <div class="availabilities-slot">11:00</div>
-            <div class="availabilities-slot">12:00</div>
+            <div class="availabilities-slot" data-date="2017,1,15", data-time="9:00">9:00</div>
+            <div class="availabilities-slot" data-date="2017,1,15", data-time="10:00">10:00</div>
           </div>
         </div>
       </div>
     </div>
     <br>
-    <%= link_to "Valider", availabilities_path, class: "btn" %>
+    <button class="btn" id="validation-calendrier">Valider</button>
   </div>
 </div>
