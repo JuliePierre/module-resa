@@ -19,6 +19,7 @@ gem 'autoprefixer-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'pickadate-rails'
+gem 'icalendar'
 
 group :development, :test do
   gem 'binding_of_caller'
