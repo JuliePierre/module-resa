@@ -6,103 +6,26 @@
       <div class="availabilities-table">
         <% @week1.each do |day| %>
           <div class="availabilities-day">
-            <div class="availabilities-day-name"><%= day.strftime("%A") %></div>
-            <div class="availabilities-day-date"><%= day.strftime("%d %b") %></div>
+            <div class="availabilities-day-title">
+              <div class="availabilities-day-name"><%= day.strftime("%A") %></div>
+              <div class="availabilities-day-date"><%= day.strftime("%d %b") %></div>
+            </div>
+            <div class="availabilities-slots">
               <% availabilities = Availability.where(date: day) %>
-                <% availabilities.each do |s| %>
-                  <div class="availabilities-slot">
-                    <%= (s.start_time + 60 * 60).strftime('%H:%M') %>
+                <% if availabilities == [] %>
+                  <div class="empty-slot">
+                  -
                   </div>
+                <% else %>
+                  <% availabilities.each do |a| %>
+                    <div class="availabilities-slot" data-date="<%= day %>" data-time="<%= (a.time) %>">
+                      <%= (a.time).strftime('%H:%M') %>
+                    </div>
+                  <% end %>
                 <% end %>
+            </div>
           </div>
         <% end %>
-
-
-      <!--
-        <div class="availabilities-day">
-          <div class="availabilities-day-title">
-            <div class="availabilities-day-name">Lundi</div>
-            <div class="availabilities-day-date" data-date="9 janvier">9 janvier</div>
-          </div>
-          <div class="availabilities-slots">
-            <div class="availabilities-slot">9:00</div>
-            <div class="availabilities-slot">10:00</div>
-            <div class="availabilities-slot">11:00</div>
-            <div class="availabilities-slot">12:00</div>
-          </div>
-        </div>
-        <div class="availabilities-day">
-          <div class="availabilities-day-title">
-            <div class="availabilities-day-name">Mardi</div>
-            <div class="availabilities-day-date">10 janvier</div>
-          </div>
-          <div class="availabilities-slots">
-            <div class="availabilities-slot">9:00</div>
-            <div class="availabilities-slot">10:00</div>
-            <div class="availabilities-slot">11:00</div>
-            <div class="availabilities-slot">12:00</div>
-          </div>
-        </div>
-        <div class="availabilities-day">
-          <div class="availabilities-day-title">
-            <div class="availabilities-day-name">Mercredi</div>
-            <div class="availabilities-day-date">11 janvier</div>
-          </div>
-          <div class="availabilities-slots">
-            <div class="availabilities-slot">9:00</div>
-            <div class="availabilities-slot">10:00</div>
-            <div class="availabilities-slot">11:00</div>
-            <div class="availabilities-slot">12:00</div>
-          </div>
-        </div>
-        <div class="availabilities-day">
-          <div class="availabilities-day-title">
-            <div class="availabilities-day-name">Jeudi</div>
-            <div class="availabilities-day-date">12 janvier</div>
-          </div>
-          <div class="availabilities-slots">
-            <div class="availabilities-slot">9:00</div>
-            <div class="availabilities-slot">10:00</div>
-            <div class="availabilities-slot">11:00</div>
-            <div class="availabilities-slot">12:00</div>
-          </div>
-        </div>
-        <div class="availabilities-day">
-          <div class="availabilities-day-title">
-            <div class="availabilities-day-name">Vendredi</div>
-            <div class="availabilities-day-date">13 janvier</div>
-          </div>
-          <div class="availabilities-slots">
-            <div class="availabilities-slot">9:00</div>
-            <div class="availabilities-slot">10:00</div>
-            <div class="availabilities-slot">11:00</div>
-            <div class="availabilities-slot">12:00</div>
-          </div>
-        </div>
-        <div class="availabilities-day">
-          <div class="availabilities-day-title">
-            <div class="availabilities-day-name">Samedi</div>
-            <div class="availabilities-day-date">14 janvier</div>
-          </div>
-          <div class="availabilities-slots">
-            <div class="availabilities-slot">9:00</div>
-            <div class="availabilities-slot">10:00</div>
-            <div class="availabilities-slot">11:00</div>
-            <div class="availabilities-slot">12:00</div>
-          </div>
-        </div>
-        <div class="availabilities-day">
-          <div class="availabilities-day-title">
-            <div class="availabilities-day-name">Dimanche</div>
-            <div class="availabilities-day-date">15 janvier</div>
-          </div>
-          <div class="availabilities-slots">
-            <div class="availabilities-slot">9:00</div>
-            <div class="availabilities-slot">10:00</div>
-            <div class="availabilities-slot">11:00</div>
-            <div class="availabilities-slot">12:00</div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>

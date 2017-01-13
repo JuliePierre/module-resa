@@ -4,16 +4,12 @@ $('.availabilities-slot.active').each(function(i, slot){
   // console.log('toto');
   // console.log($(slot));
   var date = $(slot).data('date');
-  var year = date.split(",")[0];
-  var month = date.split(",")[1];
-  var day = date.split(",")[2];
-  var time = $(slot).data('time');
-  var hour = time.split(":")[0];
-  var minutes = time.split(":")[1];
-  available_slot = new Date(year, month - 1, day, hour, minutes);
-  // console.log(available_slot);
+  var datetime = $(slot).data('time');
+  available_slot = new Date(datetime);
+  // ATTENTION : AVAILABLE SLOT A UNE HEURE DE PLUS QUE CE QUI EST AFFICHÉ MAIS POUR AFFICHAGE, PAS UN PROBLEME
+  console.log(available_slot);
   available_slots.push(available_slot);
-  console.log(available_slots);
+  // console.log(available_slots);
 });
 
 $('.availabilities-slot').click(function(){
@@ -21,38 +17,27 @@ $('.availabilities-slot').click(function(){
   if ($(this).hasClass('active')){
     // create a Date object from date and time
     var date = $(this).data('date');
-    var year = date.split(",")[0];
-    var month = date.split(",")[1];
-    var day = date.split(",")[2];
-    var time = $(this).data('time');
-    var hour = time.split(":")[0];
-    var minutes = time.split(":")[1];
-    available_slot = new Date(year, month - 1, day, hour, minutes);
+    var datetime = $(this).data('time');
+    available_slot = new Date(datetime);
+    console.log(available_slot);
     available_slots.push(available_slot);
-    // old version
-    // available_slots.push($(this).data('date'));
-    // console.log($(this));
-    // console.log(available_slots);
+    console.log(available_slots);
   };
   if (!$(this).hasClass('active')){
     var selection  = $(this);
     var date = selection.data('date');
-    var year = date.split(",")[0];
-    var month = date.split(",")[1];
-    var day = date.split(",")[2];
-    var time = selection.data('time');
-    var hour = time.split(":")[0];
-    var minutes = time.split(":")[1];
-    var date_to_remove = new Date(year, month - 1, day, hour, minutes);
+    var datetime = selection.data('time');
+    var date_to_remove = new Date(datetime);
     var index = available_slots.map(Number).indexOf(+date_to_remove);
     available_slots.splice(index, 1);
+    console.log(available_slots);
   };
 });
 
 $('#validation-calendrier').click(function(){
-  console.log(available_slots);
+  // console.log(available_slots);
   var availabilities = JSON.stringify(available_slots);
-  console.log(availabilities);
+  // console.log(availabilities);
   $.ajax({
     type: "POST",
     url: "/calendar/",

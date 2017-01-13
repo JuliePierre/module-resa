@@ -68,3 +68,16 @@
 .availabilities-slot:hover {
   background-color: #ffe500;
 }
+
+.empty-slot {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+  height: 34px;
+  line-height: 34px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: white;
+}

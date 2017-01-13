@@ -9,6 +9,6 @@ class Availability < ApplicationRecord
   end
 
   def exists?
-    Availability.find_by_date(self.date) != nil && Availability.where(date: self.date).find_by_start_time(self.start_time) != nil
+    Availability.find_by_date(self.date) != nil && Availability.where(date: self.date).find_by_time(self.time) != nil
   end
 end

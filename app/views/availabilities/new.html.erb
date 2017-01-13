@@ -1,83 +1,55 @@
 <div class="container">
   <div class="wrapper-grey center-align">
-  <h2>Slots par date</h2>
-  <p>cf Doctolib</p>
+    <h2>Slots par date</h2>
+    <p>cf Doctolib</p>
     <div class="wrapper-white" style="width: 900px;">
       <div class="availabilities-table">
-        <div class="availabilities-day">
-          <div class="availabilities-day-title">
-            <div class="availabilities-day-name">Lundi</div>
-            <div class="availabilities-day-date">9 janvier</div>
+        <% @week1.each do |day| %>
+          <div class="availabilities-day">
+            <div class="availabilities-day-title">
+              <div class="availabilities-day-name"><%= day.strftime("%A") %></div>
+              <div class="availabilities-day-date"><%= day.strftime("%d %b") %></div>
+            </div>
+            <div class="availabilities-slots">
+              <% slots = @slots[day] %>
+              <% slots.each do |slot| %>
+                <% if @available_datetimes.include?(slot) %>
+                  <div class="availabilities-slot active" data-date="<%= day %>" data-time="<%= slot %>">
+                    <%= slot.strftime('%H:%M') %>
+                  </div>
+                <% else %>
+                  <div class="availabilities-slot" data-date="<%= day %>" data-time="<%= slot %>">
+                    <%= slot.strftime('%H:%M') %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
           </div>
-          <div class="availabilities-slots">
-            <!-- <div class="availabilities-slot active" data-date="<%#= Date.today %>">9:00</div> -->
-            <div class="availabilities-slot active" data-date="2017,1,9", data-time="9:00">9:00</div>
-            <div class="availabilities-slot" data-date="2017,1,9", data-time="10:00">10:00</div>
-          </div>
-        </div>
-        <div class="availabilities-day">
-          <div class="availabilities-day-title">
-            <div class="availabilities-day-name">Mardi</div>
-            <div class="availabilities-day-date">10 janvier</div>
-          </div>
-          <div class="availabilities-slots">
-            <div class="availabilities-slot" data-date="2017,1,10", data-time="9:00">9:00</div>
-            <div class="availabilities-slot" data-date="2017,1,10", data-time="10:00">10:00</div>
-          </div>
-        </div>
-        <div class="availabilities-day">
-          <div class="availabilities-day-title">
-            <div class="availabilities-day-name">Mercredi</div>
-            <div class="availabilities-day-date">11 janvier</div>
-          </div>
-          <div class="availabilities-slots">
-            <div class="availabilities-slot" data-date="2017,1,11", data-time="9:00">9:00</div>
-            <div class="availabilities-slot" data-date="2017,1,11", data-time="10:00">10:00</div>
-          </div>
-        </div>
-        <div class="availabilities-day">
-          <div class="availabilities-day-title">
-            <div class="availabilities-day-name">Jeudi</div>
-            <div class="availabilities-day-date">12 janvier</div>
-          </div>
-          <div class="availabilities-slots">
-            <div class="availabilities-slot" data-date="2017,1,12", data-time="9:00">9:00</div>
-            <div class="availabilities-slot" data-date="2017,1,12", data-time="10:00">10:00</div>
-          </div>
-        </div>
-        <div class="availabilities-day">
-          <div class="availabilities-day-title">
-            <div class="availabilities-day-name">Vendredi</div>
-            <div class="availabilities-day-date">13 janvier</div>
-          </div>
-          <div class="availabilities-slots">
-            <div class="availabilities-slot" data-date="2017,1,13", data-time="9:00">9:00</div>
-            <div class="availabilities-slot" data-date="2017,1,13", data-time="10:00">10:00</div>
-          </div>
-        </div>
-        <div class="availabilities-day">
-          <div class="availabilities-day-title">
-            <div class="availabilities-day-name">Samedi</div>
-            <div class="availabilities-day-date">14 janvier</div>
-          </div>
-          <div class="availabilities-slots">
-            <div class="availabilities-slot" data-date="2017,1,14", data-time="9:00">9:00</div>
-            <div class="availabilities-slot" data-date="2017,1,14", data-time="10:00">10:00</div>
-          </div>
-        </div>
-        <div class="availabilities-day">
-          <div class="availabilities-day-title">
-            <div class="availabilities-day-name">Dimanche</div>
-            <div class="availabilities-day-date">15 janvier</div>
-          </div>
-          <div class="availabilities-slots">
-            <div class="availabilities-slot" data-date="2017,1,15", data-time="9:00">9:00</div>
-            <div class="availabilities-slot" data-date="2017,1,15", data-time="10:00">10:00</div>
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
-    <br>
     <button class="btn" id="validation-calendrier">Valider</button>
   </div>
 </div>
+
+
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
+      console.log('toto');
+      <% @availabilities.each do |availability| %>
+        console.log('titi');
+        <% t = availability.time.to_s %>;
+        $('.availabilities-slot[data-time="<%= t %>"]').addClass('active');
+      <% end %>
+    });
+  </script>
+<% end %>
+
+
+
+<!-- t (availability.time.to_s)
+data-time=2017-01-16 11:00:00 UTC
+dans la div, le format time est
+2017-01-16T16:00:00+00:00  -->
