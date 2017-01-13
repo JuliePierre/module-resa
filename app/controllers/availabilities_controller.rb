@@ -22,6 +22,8 @@ class AvailabilitiesController < ApplicationController
 
   def create
     availabilities_array = JSON.parse(params[:my_data])
+    array_to_remove = JSON.parse(params[:to_remove])
+
     availabilities_array.each do |availability|
       date = Date.parse(availability)
       time = DateTime.parse(availability)
@@ -32,6 +34,15 @@ class AvailabilitiesController < ApplicationController
         available_date.save
       end
     end
+
+    array_to_remove.each do |availability|
+      date = Date.parse(availability)
+      time = DateTime.parse(availability)
+      a = Availability.where(date: date, time: time)
+      print a
+      Availability.delete(a)
+    end
+
     p availabilities_array
   end
 
