@@ -8,4 +8,7 @@
 //= require pickadate/picker.date
 //= require pickadate/picker.time
 //= require pickadate/translations/fr_FR
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .

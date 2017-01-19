@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   get 'calendar', to: 'availabilities#new'
   post 'calendar', to: 'availabilities#create'
   get 'availabilities', to: 'availabilities#index'
+  get 'icalendar', to: 'meetings#new'
+  get 'react', to: 'meetings#index'
 end

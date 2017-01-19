@@ -15,6 +15,7 @@ gem 'materialize-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
+gem 'react-rails'
 
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
